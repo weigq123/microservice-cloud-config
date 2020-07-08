@@ -12,9 +12,9 @@ spring:
     
 eureka:
   instance:
-   hostname: eureka6001.com
+    hostname: eureka6001.com
   client:
-   registerWithEureka: false
+    registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
     defaultZone: http://eureka6001.com:6001/eureka/
@@ -30,9 +30,9 @@ spring:
   
 eureka:
   instance:
-   hostname: eureka6001.com
+    hostname: eureka6001.com
   client:
-   registerWithEureka: false
+    registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://eureka6001.com:6001/eureka/
