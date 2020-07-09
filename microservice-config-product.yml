@@ -6,7 +6,7 @@ server:
   port: 8001
 
 emp: 
-  name: zhangsan
+  name: 李四
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml  # mybatis配置文件所在路径
