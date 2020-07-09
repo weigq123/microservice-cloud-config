@@ -1,72 +1,78 @@
-#注意：如果在记事本上编写，下面的缩进不要使用Tab来缩进，不然报错
 spring:
   profiles:
-    active: dev # 激活开发环境配置
+    active: dev # 激活当前环境（dev：开发，prod：生产）
 ---
 server:
   port: 8001
 
 mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
+  config-location: classpath:mybatis/mybatis.cfg.xml  # mybatis配置文件所在路径
+  # 所有entity别名类所在包路径（实体类）,使得在mapper.xml里不需要写全类名。resultMap的type或者parameterType会使用自定义的pojo
   type-aliases-package: com.mengxuegu.springcloud.entities
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  mapper-locations: classpath:mybatis/mapper/**/*.xml # mapper映射文件所在路径
 
 spring:
   profiles: dev # 开发环境
   application:
-    name: microservice-product-config # ******服务名*******
+    name: microservice-product #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/springcloud_db01?serverTimezone=GMT%2B8 #数据库连接地址，*****注意库名 db01***************
+    type: com.alibaba.druid.pool.DruidDataSource    # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver     # mysql驱动包
+    url: jdbc:mysql://127.0.0.1:3306/springcloud_db01?serverTimezone=GMT%2B8
     username: root
-    password: root
-    dbcp2:
-      min-idle: 5
-      initial-size: 5
-      max-total: 5
-      max-wait-millis: 150
+    password: 123456
+    dbcp2:  # 连接池设置
+      min-idle: 5 # 数据库连接池的最小维持连接数
+        initial-size: 5 # 初始化连接数
+        max-total: 5 # 最大连接数
+        max-wait-millis: 150 # 等待连接获取的最大超时时间
 
 eureka:
   client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-    defaultZone: http://eureka6001.com:6001/eureka
+    registerWithEureka: true # 服务注册，false表示不将自已注册到Eureka服务中
+    fetchRegistry: true # 服务发现，false表示自己不从Eureka服务中获取注册信息
+    serviceUrl:
+      defaultZone: http://eureka6001.com:6001/eureka # ,http://eureka6002.com:6002/eureka,http://eureka6003.com:6003/eureka  # 注册到哪一个Eureka Server服务注册中心，多个中间用逗号分隔
+
   instance:
-    instanceId: ${spring.application.name}:${server.port}
-    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
+    prefer-ip-address: true # 访问路径可以显示IP地址
+
 ---
 server:
   port: 8001
 
 mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
+  config-location: classpath:mybatis/mybatis.cfg.xml  # mybatis配置文件所在路径
+  # 所有entity别名类所在包路径（实体类）,使得在mapper.xml里不需要写全类名。resultMap的type或者parameterType会使用自定义的pojo
   type-aliases-package: com.mengxuegu.springcloud.entities
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  mapper-locations: classpath:mybatis/mapper/**/*.xml # mapper映射文件所在路径
 
 spring:
   profiles: prod # 生产环境
   application:
-    name: microservice-product-config # ******服务名*******
+    name: microservice-product #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/springcloud_db02?serverTimezone=GMT%2B8 #数据库连接地址，*****注意库名 db01***************
+    type: com.alibaba.druid.pool.DruidDataSource    # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver     # mysql驱动包
+    url: jdbc:mysql://127.0.0.1:3306/springcloud_db02?serverTimezone=GMT%2B8
     username: root
-    password: root
-    dbcp2:
-      min-idle: 5
-      initial-size: 5
-      max-total: 5
-      max-wait-millis: 150
+    password: 123456
+    dbcp2:  # 连接池设置
+      min-idle: 5 # 数据库连接池的最小维持连接数
+        initial-size: 5 # 初始化连接数
+        max-total: 5 # 最大连接数
+        max-wait-millis: 150 # 等待连接获取的最大超时时间
 
 eureka:
   client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-    defaultZone: http://eureka6001.com:6001/eureka
+    registerWithEureka: true # 服务注册，false表示不将自已注册到Eureka服务中
+    fetchRegistry: true # 服务发现，false表示自己不从Eureka服务中获取注册信息
+    serviceUrl:
+      defaultZone: http://eureka6001.com:6001/eureka # ,http://eureka6002.com:6002/eureka,http://eureka6003.com:6003/eureka  # 注册到哪一个Eureka Server服务注册中心，多个中间用逗号分隔
+
   instance:
-    instanceId: ${spring.application.name}:${server.port}
-    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
+    prefer-ip-address: true # 访问路径可以显示IP地址
+
+
