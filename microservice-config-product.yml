@@ -6,7 +6,7 @@ server:
   port: 8001
 
 emp: 
-  name: 李四
+  name: 王五
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml  # mybatis配置文件所在路径
@@ -17,7 +17,7 @@ mybatis:
 spring:
   profiles: dev # 开发环境
   application:
-    name: microservice-product-bus-test #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个
+    name: microservice-product-bus-test001 #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource    # 当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver     # mysql驱动包
