@@ -3,7 +3,10 @@ spring:
     active: dev # 激活当前环境（dev：开发，prod：生产）
 ---
 server:
-  port: 8003
+  port: 8001
+
+emp: 
+  name: zhangsan
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml  # mybatis配置文件所在路径
